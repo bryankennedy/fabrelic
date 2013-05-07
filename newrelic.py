@@ -17,3 +17,6 @@ def report_deploy():
     the New Relic monitoring tool.
     """
     deploy_url = "https://rpm.newrelic.com/deployments.xml"
+    request = urllib2.Request(deploy_url, app_values)
+    request.add_header('x-api-key', env.newrelic['API_KEY'])
+    urllib2.urlopen(req)
