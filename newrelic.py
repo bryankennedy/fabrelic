@@ -17,7 +17,12 @@ def report_deploy(api_key, app_values):
     Args:
         A dictionary of the New Relic Parameters.
     """
-    deploy_url = 'https://rpm.newrelic.com/deployments.xml'
-    request = urllib2.Request(deploy_url, urllib.urlencode(app_values))
-    request.add_header('X-api-key', api_key)
-    response = urllib2.urlopen(request)
+    try:
+        deploy_url = 'https://rpm.newrelic.com/deployments.xml'
+        request = urllib2.Request(deploy_url, urllib.urlencode(app_values))
+        request.add_header('X-api-key', api_key)
+        urllib2.urlopen(request)
+    except urllib2.HTTPError, e:
+        print 'Our attempt to report to New Relic caused a HTTPError: ', e.code
+        print e.headers
+        print e.fp.read()
