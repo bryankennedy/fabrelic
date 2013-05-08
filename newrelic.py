@@ -15,7 +15,10 @@ def report_deploy(api_key, app_values):
     the New Relic monitoring tool.
 
     Args:
-        A dictionary of the New Relic Parameters.
+        api_key:
+            A string containing your New Relic API key
+        app_values:
+            A dictionary containing the New Relic deploy parameters.
     """
     try:
         deploy_url = 'https://rpm.newrelic.com/deployments.xml'
