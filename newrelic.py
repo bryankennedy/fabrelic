@@ -9,7 +9,7 @@ import urllib2
 
 
 @task
-def report_deploy(app_values):
+def report_deploy(api_key, app_values):
     """
     Get the New Relic deploy XML. This records a deploy action with
     the New Relic monitoring tool.
@@ -20,5 +20,5 @@ def report_deploy(app_values):
     deploy_url = "https://rpm.newrelic.com/deployments.xml"
     app_values = urllib.urlencode(app_values)
     request = urllib2.Request(deploy_url, app_values)
-    request.add_header('x-api-key', env.newrelic['API_KEY'])
+    request.add_header('x-api-key', api_key)
     urllib2.urlopen(request)
