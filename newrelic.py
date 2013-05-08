@@ -9,6 +9,7 @@ import urllib2
 
 DEPLOY_URL = 'https://rpm.newrelic.com/deployments.xml'
 
+
 @task
 def report_deploy(api_key, app_values):
     """
