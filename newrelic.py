@@ -3,7 +3,7 @@ Tools to alert New Relic of deploys
 """
 
 from fabric.api import task
-from fabric.abort import abort
+from fabric.utils import abort
 
 import urllib
 import urllib2
